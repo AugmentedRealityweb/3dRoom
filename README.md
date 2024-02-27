@@ -8,7 +8,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url('bkgd.jpg');
+      background-image: url('bkgd2.jpg');
       background-size: cover;
       background-position: center;
       display: flex;
@@ -27,8 +27,8 @@
       margin-bottom: 50px; /* Spațiere între model și butonul de navigare */
     }
  model-viewer {
-      width: 500px;
-      height: 570px;
+      width: 400px;
+      height: 470px;
       margin: 0 auto;
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
