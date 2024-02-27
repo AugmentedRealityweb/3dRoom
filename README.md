@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-    <model-viewer src="room.glb" ios-src="room.usdz" 
+    <model-viewer src="room.glb" ios-src="room(1).usdz" 
                   alt="A 3D model of a room" 
                   auto-rotate camera-controls 
                   background-color="#455A64"></model-viewer>
