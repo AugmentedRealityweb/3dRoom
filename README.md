@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -50,20 +51,25 @@
 
 <script>
   function createHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = ['❤️', '💕', '💝'][Math.floor(Math.random() * 3)];
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.fontSize = Math.random() * 24 + 12 + 'px';
-    heart.style.animation = `fall ${Math.random() * 5 + 2}s linear infinite`;
-    document.body.appendChild(heart);
+    const heartCount = 20 + Math.floor(Math.random() * 10); // Generează între 20 și 30 de inimioare
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = ['❤️', '💕', '💝'][Math.floor(Math.random() * 3)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 24 + 12 + 'px';
+      heart.style.animation = `fall ${Math.random() * 5 + 2}s linear`;
 
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
+      document.body.appendChild(heart);
+
+      // Elimină inimioara după ce a terminat de căzut pentru a nu încărca inutil DOM-ul
+      setTimeout(() => {
+        heart.remove();
+      }, (Math.random() * 5 + 2) * 1000); // Ajustează timpul conform duratei de animație
+    }
   }
 
-  setInterval(createHeart, 300);
+  setInterval(createHeart, 2000); // Ajustează intervalul de timp pentru a controla cât de des sunt generate grupurile de inimioare
 
 </script>
 </body>
