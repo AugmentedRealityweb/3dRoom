@@ -1,186 +1,71 @@
+
 <html lang="en">
-
 <head>
-
- <meta charset="UTF-8">
-
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
- <title>Modele AR Optimizate</title>
-
- <style>
-
-  body {
-
-   margin: 0;
-
-   padding: 0;
-
-   font-family: Arial, sans-serif;
-
-   background-image: url('bkgd2.jpg');
-
-   background-size: cover;
-
-   background-position: center;
-
-   display: flex;
-
-   justify-content: center;
-
-   align-items: center;
-
-   height: 100vh;
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te iubesc, Mădy!</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-family: Arial, sans-serif;
   }
 
-  .model-container {
-
-   display: flex;
-
-   flex-direction: column;
-
-   align-items: center;
-
-   justify-content: center;
-
+  .heart {
+    position: absolute;
+    color: pink;
   }
 
-.model-section {
-
-   text-align: center;
-
-   margin-bottom: 50px; /* Spațiere între model și butonul de navigare */
-
+  @keyframes fall {
+    to {
+      transform: translateY(100vh);
+    }
   }
 
- model-viewer {
-
-   width: 400px;
-
-   height: 470px;
-
-   margin: 0 auto;
-
-   border-radius: 20px;
-
-   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-
+  .message {
+    color: red;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px #000;
+    opacity: 0;
+    animation: blink 4s infinite 2s;
+    position: absolute;
+    z-index: 1000;
   }
 
-.ar-button {
-
-   padding: 5px 10px; /* Ajustat pentru a face butonul mai mic */
-
-   font-size: 0.8rem; /* Ajustat pentru a face textul mai mic */
-
-   margin-top: 10px;
-
-   background-color: #007BFF;
-
-   border: none;
-
-   border-radius: 20px;
-
-   color: white;
-
-   cursor: pointer;
-
-   transition: background-color 0.3s, box-shadow 0.3s;
-
+  @keyframes blink {
+    50% {
+      opacity: 1;
+    }
   }
-
-  .ar-button:hover {
-
-   background-color: #0056b3;
-
-  }
-
- .back-link {
-
-   display: block;
-
-   margin-top: 50px; /* Distanța de la model */
-
-   text-decoration: none;
-
-   color: white;
-
-   background-color: #007BFF;
-
-   padding: 10px 15px;
-
-   border-radius: 20px;
-
-   font-size: 0.9rem;
-
-   transition: background-color 0.3s;
-
-  }
-
- .back-link:hover {
-
-   background-color: #0056b3;
-
-  }
-
- p {
-
-   color: #FFFFFF;
-
-   font-size: 1.2em;
-
-  }
-
- </style>
-
- <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
-
+</style>
 </head>
-
 <body>
+<div class="message">Te iubesc, Mădy!</div>
 
-<div class="model-container">
+<script>
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = ['❤️', '💕', '💝'][Math.floor(Math.random() * 3)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = Math.random() * 24 + 12 + 'px';
+    heart.style.animation = `fall ${Math.random() * 5 + 2}s linear infinite`;
+    document.body.appendChild(heart);
 
- <div class="model-section">
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
 
-  <model-viewer
+  setInterval(createHeart, 300);
 
-   src="room.glb"
-
-   ios-src="room.usdz"
-
-   ar
-
-   ar-modes="webxr scene-viewer quick-look"
-
-   camera-controls
-
-   auto-rotate
-
-   environment-image="neutral"
-
-   shadow-intensity="1"
-
-   loading="lazy"
-
-   alt="Noodle"
-
-   min-camera-orbit="auto 0deg 0deg"
-
-   max-camera-orbit="auto 80deg auto">
-
-   <button slot="ar-button" class="ar-button">Activează modul AR</button>
-
-  </model-viewer>
-
- </div>
-
- <a href="https://augmentedrealityweb.github.io/toate-produsele/" class="back-link">Înapoi la meniul principal</a>
-
-</div>
-
+</script>
 </body>
-
 </html>
-
